@@ -3069,23 +3069,23 @@ lists.forEach(el => {
 // элементы в промежутке от предыдущего кликнутого до текущего.
 
 let list = document.querySelector('.booklist ol') as HTMLOListElement
- 
 
-function setSelected(books:any)  {
-  if(books.target.tagName == 'OL'){
-      let selected = document.querySelector('.bookList.selected')
-      if(selected) selected.classList.remove('selected')
-      books.target.classList.add('selected')
+
+function setSelected(books: any) {
+  if (books.target.tagName == 'OL') {
+    let selected = document.querySelector('.bookList.selected')
+    if (selected) selected.classList.remove('selected')
+    books.target.classList.add('selected')
   }
 }
 
 let lastActive: any
 list.addEventListener('click', event => {
   const target = event.target as HTMLElement
-  if(target.tagName == 'LI') {
+  if (target.tagName == 'LI') {
     if (event.ctrlKey) {
       target.classList.toggle('selected')
-    } 
+    }
     if (!event.ctrlKey && !event.shiftKey) {
       for (let el of list.querySelectorAll('li')) {
         if (el != target) {
@@ -3107,11 +3107,11 @@ list.addEventListener('click', event => {
         let targetIndex = 0
         let lastActiveIndex = 0
         const lis = list.querySelectorAll('li')
-        lis.forEach((el, i)=>{
-          if (el==target) targetIndex = i
-          if (el==lastActive) lastActiveIndex = i
+        lis.forEach((el, i) => {
+          if (el == target) targetIndex = i
+          if (el == lastActive) lastActiveIndex = i
         })
-        for (let i=Math.min(targetIndex, lastActiveIndex); i<=Math.max(targetIndex, lastActiveIndex); i++) {
+        for (let i = Math.min(targetIndex, lastActiveIndex); i <= Math.max(targetIndex, lastActiveIndex); i++) {
           lis[i].classList.add('selected')
         }
       }
@@ -3121,7 +3121,39 @@ list.addEventListener('click', event => {
   }
 })
 
-
-
+const animDiv = document.querySelector('runJS') as HTMLDivElement
+let position = -5
+function animation() {
+  setInterval(() => {
+    switch (position) {
+      case -5: {
+        position -= 80 //position = position - 80
+        break
+      }
+      case -85: {
+        position -= 77.5
+        break
+      }
+      case -162.5: {
+        position -= 76.5
+        break
+      }
+      case -239: {
+        position -= 67
+        break
+      }
+      case -306: {
+        position -= 67
+        break
+      }
+      case -373: {
+        position=-5
+        break
+      }
+    }
+    animDiv.style.backgroundPositionX = position + 'px'
+  }, 200)
+}
+animation()
 
 
