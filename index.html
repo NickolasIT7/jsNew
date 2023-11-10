@@ -28,29 +28,42 @@
       cursor: pointer;
     }
     .run {
-margin:10px;
-background:url(JBnJItf) no-repeat;
-width:99px;
-height:134px;
-animation: run 0.5s infinite steps(5);
-}
-.run div {
-margin:10px;
-background:url(JBnJItf) no-repeat;
-width:98px;
-height:134px;
-animation: run 0.5s infinite steps(5)
-}
-@keyframes run{
-  0%{
-background-position: 12px 0;
-  }
-
- 100%{
-  background-position: -354px 0;
- }
-}
-
+      margin: 10px;
+      background: url(JBnJItf.png) no-repeat;
+      width: 99px;
+      height: 134px;
+      position: relative;
+      animation: run 0.5s infinite steps(5)
+      /* , runRun linear 2.5s infinite; */
+    }
+    .run div {
+      background-color: white;
+      background-color: white;
+      position: absolute;
+      height: 100%;
+      width: 28px;
+    }
+    .runJs {
+      width: 76px;
+      background: url(JBnJItf.png) no-repeat;
+      height: 134px;
+    }
+    @keyframes run {
+      0% {
+        background-position:12px 0;
+      }
+      100% {
+        background-position: -354px 0;
+      }
+    }
+    @keyframes runRun {
+      0% {
+        margin-left: -10px;
+      }
+      100% {
+        margin-left: calc(100% - 100px);
+      }
+    }
   </style>
 </head>
 <div class="links">
@@ -90,7 +103,7 @@ background-position: 12px 0;
     </li>
   </ul>
 </div>
-<div style="background:position -80 0;" class="run Js"></div>
+
 <div class="booklist">
 <ol>
   <li>"Dracula" by Bram Stoker</li>
@@ -102,10 +115,23 @@ background-position: 12px 0;
   </ol>
 
  
-<div class="run"></div>
-<div></div>
+<div class="run">
+  <div></div>
 
 </div>
+
+<div style="background-position: -5px 0;" class="runJs">
+</div>
+
+<div id="dinamicText"></div>
+
+<div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
 
 
 

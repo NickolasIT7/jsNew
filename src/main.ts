@@ -2813,6 +2813,38 @@ function testLoaded() {
 // должно выводиться 300
 preloadImages(sources, testLoaded);
 
+const field = document.getElementById('field')
+  const ball = document.getElementById('ball')
+  
+  const ballWidth = ball?.clientWidth
+  const ballHeight = ball?.clientHeight
+  const fieldWidth = field?.clientWidth
+  const fieldHeight = field?.clientHeight
+  
+  let deg = 0
+
+  field?.addEventListener('click', (e)=>{
+    if (e.target == field) {
+      let x = e.offsetX
+      let y = e.offsetY
+      console.log(x,y)
+      if (ball && ballWidth && ballHeight && fieldWidth && fieldHeight) {
+        if (deg == 360) deg = 0
+        x = x - (ballWidth/2)
+        y = y - (ballHeight/2)
+        if (x < 0) x = 0
+        if (y < 0) y = 0
+        if (x + (ballWidth) > fieldWidth) x = fieldWidth - (ballWidth)
+        if (y + (ballHeight) > fieldHeight) y = fieldHeight - (ballHeight)
+        ball.style.left = x + 'px'
+        ball.style.top = y + 'px'
+        console.log(x,y)
+        deg += 180
+        ball.style.transform = `rotate(${deg}deg)`
+      }
+    }    
+  })
+
 //3
 //Реализовать класс Employee, описывающий работника, и создать массив работников банка.
 //Реализовать класс EmpTable для генерации html кода таблицы со списком работников банка. 
@@ -2900,7 +2932,7 @@ class Button {
     document.body.insertAdjacentHTML('beforeend', `<button style="width:${this.width}; height:${this.height};">${this.text}</button>`)
   }
 }
-const newButton = new Button(100, 50, 'dsfsdfsd')
+const newButton = new Button(100, 50, 'stop')
 newButton.showBtn()
 class BootstrapButton extends Button {
   color
@@ -2914,7 +2946,7 @@ class BootstrapButton extends Button {
   }
 }
 
-const newButton2 = new BootstrapButton(100, 50, 'FDDFWE', 'red')
+const newButton2 = new BootstrapButton(100, 50, 'play', 'red')
 newButton2.showBtn()
 //2
 // Реализовать класс, описывающий геометрическую фигуру со свойствами и методами:
@@ -3121,29 +3153,40 @@ list.addEventListener('click', event => {
   }
 })
 
-const animDiv = document.querySelector('runJS') as HTMLDivElement
+const dinamicTextDiv = document.getElementById('dinamicText') as HTMLDivElement
+// const dinamicTextDiv1 = document.querySelector('#dinamicText')
+
+function dinamicWrite(el:HTMLDivElement, text:string, speed:number) {
+  for (let i=0; i<text.length; i++) {
+    setTimeout(() => { el.textContent += text[i]}, 1000*i/speed)
+  }
+}
+dinamicWrite(dinamicTextDiv, 'So close no matter how far. Couldnot be much more from the heart, forever trusting who we are and nothing else matters', 10)
+
+const animDiv = document.querySelector('.runJs') as HTMLDivElement
 let position = -5
 function animation() {
-  setInterval(() => {
+  setInterval(()=>{
+    animDiv.style.backgroundPositionX = position + 'px'
     switch (position) {
       case -5: {
-        position -= 80 //position = position - 80
+        position-=80 // position = position - 77.5
         break
       }
       case -85: {
-        position -= 77.5
+        position-=77.5 
         break
       }
       case -162.5: {
-        position -= 76.5
+        position-=76.5
         break
       }
       case -239: {
-        position -= 67
+        position-=67
         break
       }
       case -306: {
-        position -= 67
+        position-=67
         break
       }
       case -373: {
@@ -3151,9 +3194,7 @@ function animation() {
         break
       }
     }
-    animDiv.style.backgroundPositionX = position + 'px'
-  }, 200)
+  },100)
 }
 animation()
-
 
