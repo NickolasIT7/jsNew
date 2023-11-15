@@ -3248,3 +3248,5 @@ fetch('snake.html')
 
     setTimeout(() => img.remove(), 8000); // (*)
   })
+
+  
