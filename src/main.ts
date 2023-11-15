@@ -2864,10 +2864,10 @@ class Employee {
 
 const empl = [
   new Employee("Matthew McConaughey", 44, "investment specialist"),
-  new Employee("Jon Flanagan", 30, "credit specialist"),
+  new Employee("Jamie Vardy", 36, "credit specialist"),
   new Employee("Jamie Carragher", 45, "auditor"),
   new Employee("Robert Fowler", 48, "accountant"),
-  new Employee("Jamie Vardy", 36, "accountant")
+  new Employee("Kristian Bale", 49, "accountant")
 ]
 
 class EmpTable {
@@ -3214,3 +3214,37 @@ animation()
 // Отрисовать изменения страницы, если они есть.
 // Если очередь макрозадач пуста – подождать, пока появится макрозадача.
 // Перейти к шагу 1.
+
+//Цепочка промисов
+fetch('https://learn.javascript.ru//article/promise-chaining/user.json')
+fetch('snake.html')
+  // .then в коде ниже выполняется, когда удалённый сервер отвечает
+  .then(function(response) {
+    // response.text() возвращает новый промис,
+    // который выполняется и возвращает полный ответ сервера,
+    // когда он загрузится
+    return response.text();
+  })
+  .then(function(text) {
+    // ...и здесь содержимое полученного файла
+    console.log(text); // {"name": "iliakan", isAdmin: true}
+  })
+
+  .catch(e=>alert(e))
+
+  fetch('https://api.github.com/users/dullhook')
+  // Загружаем данные в формате json
+  .then(response => response.json())
+  // Делаем запрос к GitHub
+  // .then(user => fetch(`https://api.github.com/users/${user.name}`))
+  // Загружаем ответ в формате json
+  // .then(response => response.json())
+  // Показываем аватар (githubUser.avatar_url) в течение 5 секунд (возможно, с анимацией)
+  .then(githubUser => {
+    let img = document.createElement('img')
+    img.src = githubUser.avatar_url
+    img.className = "promise-avatar-example"
+    document.body.append(img)
+
+    setTimeout(() => img.remove(), 8000); // (*)
+  })
