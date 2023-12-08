@@ -13,6 +13,10 @@ export default {
         store: resolve(__dirname, 'store.html'),
         // @ts-ignore
         korzina: resolve(__dirname, 'basket.html'),
+        // @ts-ignore
+        card: resolve(__dirname, 'card.html'),
+        // @ts-ignore
+        card: resolve(__dirname, 'omdb.html'),
       }
     }
   }
