@@ -2814,36 +2814,36 @@ function testLoaded() {
 preloadImages(sources, testLoaded);
 
 const field = document.getElementById('field')
-  const ball = document.getElementById('ball')
-  
-  const ballWidth = ball?.clientWidth
-  const ballHeight = ball?.clientHeight
-  const fieldWidth = field?.clientWidth
-  const fieldHeight = field?.clientHeight
-  
-  let deg = 0
+const ball = document.getElementById('ball')
 
-  field?.addEventListener('click', (e)=>{
-    if (e.target == field) {
-      let x = e.offsetX
-      let y = e.offsetY
-      console.log(x,y)
-      if (ball && ballWidth && ballHeight && fieldWidth && fieldHeight) {
-        if (deg == 360) deg = 0
-        x = x - (ballWidth/2)
-        y = y - (ballHeight/2)
-        if (x < 0) x = 0
-        if (y < 0) y = 0
-        if (x + (ballWidth) > fieldWidth) x = fieldWidth - (ballWidth)
-        if (y + (ballHeight) > fieldHeight) y = fieldHeight - (ballHeight)
-        ball.style.left = x + 'px'
-        ball.style.top = y + 'px'
-        console.log(x,y)
-        deg += 180
-        ball.style.transform = `rotate(${deg}deg)`
-      }
-    }    
-  })
+const ballWidth = ball?.clientWidth
+const ballHeight = ball?.clientHeight
+const fieldWidth = field?.clientWidth
+const fieldHeight = field?.clientHeight
+
+let deg = 0
+
+field?.addEventListener('click', (e) => {
+  if (e.target == field) {
+    let x = e.offsetX
+    let y = e.offsetY
+    console.log(x, y)
+    if (ball && ballWidth && ballHeight && fieldWidth && fieldHeight) {
+      if (deg == 360) deg = 0
+      x = x - (ballWidth / 2)
+      y = y - (ballHeight / 2)
+      if (x < 0) x = 0
+      if (y < 0) y = 0
+      if (x + (ballWidth) > fieldWidth) x = fieldWidth - (ballWidth)
+      if (y + (ballHeight) > fieldHeight) y = fieldHeight - (ballHeight)
+      ball.style.left = x + 'px'
+      ball.style.top = y + 'px'
+      console.log(x, y)
+      deg += 180
+      ball.style.transform = `rotate(${deg}deg)`
+    }
+  }
+})
 
 //3
 //Реализовать класс Employee, описывающий работника, и создать массив работников банка.
@@ -3156,9 +3156,9 @@ list.addEventListener('click', event => {
 const dinamicTextDiv = document.getElementById('dinamicText') as HTMLDivElement
 // const dinamicTextDiv1 = document.querySelector('#dinamicText')
 
-function dinamicWrite(el:HTMLDivElement, text:string, speed:number) {
-  for (let i=0; i<text.length; i++) {
-    setTimeout(() => { el.textContent += text[i]}, 1000*i/speed)
+function dinamicWrite(el: HTMLDivElement, text: string, speed: number) {
+  for (let i = 0; i < text.length; i++) {
+    setTimeout(() => { el.textContent += text[i] }, 1000 * i / speed)
   }
 }
 dinamicWrite(dinamicTextDiv, 'So close no matter how far. Couldnot be much more from the heart, forever trusting who we are and nothing else matters', 10)
@@ -3166,35 +3166,35 @@ dinamicWrite(dinamicTextDiv, 'So close no matter how far. Couldnot be much more 
 const animDiv = document.querySelector('.runJs') as HTMLDivElement
 let position = -5
 function animation() {
-  setInterval(()=>{
+  setInterval(() => {
     animDiv.style.backgroundPositionX = position + 'px'
     switch (position) {
       case -5: {
-        position-=80 // position = position - 77.5
+        position -= 80 // position = position - 77.5
         break
       }
       case -85: {
-        position-=77.5 
+        position -= 77.5
         break
       }
       case -162.5: {
-        position-=76.5
+        position -= 76.5
         break
       }
       case -239: {
-        position-=67
+        position -= 67
         break
       }
       case -306: {
-        position-=67
+        position -= 67
         break
       }
       case -373: {
-        position=-5
+        position = -5
         break
       }
     }
-  },100)
+  }, 100)
 }
 animation()
 
@@ -3219,20 +3219,20 @@ animation()
 fetch('https://learn.javascript.ru//article/promise-chaining/user.json')
 fetch('snake.html')
   // .then в коде ниже выполняется, когда удалённый сервер отвечает
-  .then(function(response) {
+  .then(function (response) {
     // response.text() возвращает новый промис,
     // который выполняется и возвращает полный ответ сервера,
     // когда он загрузится
     return response.text();
   })
-  .then(function(text) {
+  .then(function (text) {
     // ...и здесь содержимое полученного файла
     console.log(text); // {"name": "iliakan", isAdmin: true}
   })
 
-  .catch(e=>alert(e))
+  .catch(e => alert(e))
 
-  fetch('https://api.github.com/users/dullhook')
+fetch('https://api.github.com/users/dullhook')
   // Загружаем данные в формате json
   .then(response => response.json())
   // Делаем запрос к GitHub
@@ -3249,7 +3249,7 @@ fetch('snake.html')
     setTimeout(() => img.remove(), 8000); // (*)
   })
 
-  // Promise API
+// Promise API
 
 // Promise.all(promises) – ожидает выполнения всех промисов и возвращает массив с результатами. 
 // Если любой из указанных промисов вернёт ошибку, то результатом работы Promise.all будет эта ошибка, 
@@ -3367,13 +3367,13 @@ function renderRating() {
   ratingDiv.innerHTML = ''
   ratingDiv.innerHTML += `<span class="heading">${rating.header}</span>`
   ratingDiv.innerHTML += `<hr style="border: 3px solid #f1f1f1">`
-  rating.data.forEach(el=>{
+  rating.data.forEach(el => {
     ratingDiv.innerHTML += `<div class="side">
     <div>${el.title}</div>
   </div>
   <div class="middle">
     <div class="bar-container">
-      <div style="width:${el.value/rating.maxvalue*100}%" class="bar-${el.title[0]}"></div>
+      <div style="width:${el.value / rating.maxvalue * 100}%" class="bar-${el.title[0]}"></div>
     </div>
   </div>
     <div class="side right">
@@ -3395,7 +3395,7 @@ printMachine.innerHTML = localStorage.text ? localStorage.text : ''
 input.addEventListener('input', (e) => {
   const inputEvent = e as InputEvent
   if (inputEvent.inputType == 'insertText') {
-    printMachine.innerHTML += `<span style="opacity: ${marker/100}">${inputEvent.data}</span>`
+    printMachine.innerHTML += `<span style="opacity: ${marker / 100}">${inputEvent.data}</span>`
     localStorage.text = printMachine.innerHTML
     if (inputEvent.data != ' ') marker -= 0.5
   }
@@ -3428,3 +3428,38 @@ input.addEventListener('input', (e) => {
 // headers – объект с запрашиваемыми заголовками(не все заголовки разрешены),
 // body – данные для отправки(тело запроса) в виде текста, FormData, BufferSource, Blob или UrlSearchParams.
 // В следующих главах мы рассмотрим больше параметров и вариантов использования fetch.
+
+//FormData
+
+// const FDButton = document.getElementById('FD')
+
+// FdButton?.addEventListener('click', async(e) =>) {
+//   const formData = new FormData()
+//   formData.append('name', 'Петя')
+//   formData.append('data', JSON.stringify({ name: 'Петя' }))
+//   if (fileInput.files) formData.append('file', fileInput.files[0], fileInput.files[0].name)
+//   await fetch('http://localhost:3002/file', {
+//     method: 'POST',
+//     body: 'formData'
+//   })
+// }
+
+// Объекты FormData используются, чтобы взять данные из HTML-формы и отправить их с помощью fetch или другого метода для работы с сетью.
+
+// Мы можем создать такой объект уже с данными, передав в конструктор HTML-форму – new FormData(form), или же можно 
+// создать объект вообще без формы и затем добавить к нему поля с помощью методов:
+
+// formData.append(name, value)
+// formData.append(name, blob, fileName)
+// formData.set(name, value)
+// formData.set(name, blob, fileName)
+// Отметим две особенности:
+
+// Метод set удаляет предыдущие поля с таким же именем, а append – нет. В этом их единственное отличие.
+// Чтобы послать файл, нужно использовать синтаксис с тремя аргументами, в качестве третьего как раз 
+// указывается имя файла, которое обычно, при <input type="file">, берётся из файловой системы.
+// Другие методы:
+
+// formData.delete(name)
+// formData.get(name)
+// formData.has(name)
